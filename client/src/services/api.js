@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Back End URL
-const API_BASE_URL = "http://localhost:5172/api";
+const API_BASE_URL = "http://api.ailab.org.tr";
 
 // creating instance - Axios Basic Settings
 const apiClient = axios.create({
