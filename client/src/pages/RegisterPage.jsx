@@ -1,30 +1,89 @@
-import React, { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
+import React, {useState} from "react"
+import {Eye, EyeOff} from "lucide-react"
+import { useNavigate } from "react-router-dom";
+import {registerUser} from "../services/api.js"
 
 const RegistrationForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
+  // Defining form and text states
+  const [showPassword, setShowPassword] = useState(false)
   const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
+
   const [formData, setFormData] = useState({
-    fullName: '',
-    studentId: '',
-    email: '',
-    phone: '',
-    password: '',
-    passwordConfirm: ''
-  });
+    fullName: "",
+    userName: "", // Missing field
+    studentId: "",
+    email: "",
+    phone: "",
+    password: "",
+    passwordConfirm: "",
+  })
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission logic here
-  };
+  const [message, setMessage] = useState(""); // For error/success message
+  const [isError, setIsError] = useState(false); // For message colour
+  const navigate = useNavigate(); // Start the navigator
 
-  const handleChange = (field, value) => {
+  // Adding the dynamic handleChange() function
+  const handleChange = (e) => {
+    const {name, value} = e.target;
     setFormData(prev => ({
       ...prev,
-      [field]: value
-    }));
-  };
+      [name]: value
+    }))
+  }
+
+  // Adding handleSubmit() function
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Stop the page to reload
+    setMessage("");
+    setIsError(false);
+
+    // Client-side password control
+    if (formData.password !== formData.passwordConfirm) {
+      setMessage("Şifreler uyuşmuyor. Lütfen kontrol edin.");
+      setIsError(true);
+      return;
+    }
+
+    // Prepare the data that will send to API
+    const apiData = {
+      fullName: formData.fullName,
+      userName: formData.userName, // TODO: Must be edit
+      schoolNumber: formData.studentId,
+      email: formData.email,
+      phoneNumber: formData.phone,
+      password: formData.password,
+    }
+
+    // Call API with try/catch
+    try {
+      const response = await registerUser(apiData);
+
+      console.log("Kayıt Başarılı:", response.data);
+      setMessage("Kayıt başvurunuz başarıyla alındı! Giriş sayfasına yönlendiriliyorsunuz...");
+      setIsError(false);
+      alert("Giriş ekranına yönlendiriliyorsunuz..."); // TODO: Might be removed
+
+      setTimeout(() => {
+        navigate("/login")
+      }, 2000);
+    } catch (error) {
+      setIsError(true);
+      if (error.response) {
+        // Exp: 400, 404, 500 errors
+        console.error("API Hatası:", error.response.data);
+        setMessage(error.response.data.message || "Kayıt başarısız. Lütfen bilgilerinizi kontrol edin.")
+        alert(error.response.data.message || "Kayıt başarısız. Lütfen bilgilerinizi kontrol edin.")
+      } else if (error.request) {
+        console.error("Sunucuya ulaşılamadı:", error.message);
+        setMessage("Bir hata oluştu: " + error.message)
+        alert("Bir hata oluştu: " + error.message)
+      } else {
+        console.error("İstek Hatası:", error.message);
+        setMessage("Bilinmeyen bir hata oluştu: " + error.message)
+        alert("Bilinmeyen bir hata oluştu: " + error.message)
+      }
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
