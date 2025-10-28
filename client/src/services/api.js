@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Back End URL
-const API_BASE_URL = "http://api.ailab.org.tr";
+const API_BASE_URL = "https://api.ailab.org.tr";
 
 // creating instance - Axios Basic Settings
 const apiClient = axios.create({
@@ -14,24 +14,24 @@ const apiClient = axios.create({
 // API Requests
 export const registerUser = (userData) => {
   // userData = { email, userName, schoolNumber, password, fullName, phoneNumber }
-  return apiClient.post("/Auth/register", userData);
+  return apiClient.post("api/Auth/register", userData);
 };
 
 export const loginUser = (loginData) => {
   // loginData = { emailOrUsername, password }
-  return apiClient.post("/Auth/login", loginData);
+  return apiClient.post("api/Auth/login", loginData);
 };
 
 export const refreshToken = (tokenData) => {
-  return apiClient.post("/Auth/refresh-token", tokenData);
+  return apiClient.post("api/Auth/refresh-token", tokenData);
 };
 
 export const logoutUser = (tokenData) => {
-  return apiClient.post("/Auth/logout", tokenData);
+  return apiClient.post("api/Auth/logout", tokenData);
 };
 
 export const getMe = (authToken) => {
-  return apiClient.get("/Auth/me", {
+  return apiClient.get("api/Auth/me", {
     headers: {
       Authorization: `Bearer ${authToken}`,
     },
