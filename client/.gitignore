@@ -65,3 +65,4 @@ volumes/
 .docker/
 docker-compose.override.yml
 docker-logs/
+docker-logs/*
