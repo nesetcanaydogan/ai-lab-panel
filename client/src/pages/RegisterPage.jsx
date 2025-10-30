@@ -104,10 +104,8 @@ const RegistrationForm = () => {
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
           <div className="text-center">
             <div className="inline-flex flex-col items-center">
-              <div className="w-32 h-12 sm:w-40 sm:h-14 bg-blue-900 rounded-lg flex items-center justify-center mb-3 sm:mb-4">
-                <span className="text-white font-bold text-xl sm:text-2xl">
-                  ai lab
-                </span>
+              <div className="w-32 h-12 sm:w-40 sm:h-14 rounded-lg flex items-center justify-center mb-3 sm:mb-4">
+                <img src="/Group-1.png" alt="Ai Lab Logo" />
               </div>
               <h1 className="text-xl sm:text-2xl font-bold text-blue-900">
                 Sistem Yönetim Paneli
@@ -118,7 +116,7 @@ const RegistrationForm = () => {
       </header>
 
       {/* Main Form */}
-      <main className="flex-grow py-6 sm:py-8 lg:py-12">
+      <main className="flex-grow py-6 sm:py-8 lg:py-12 flex items-center">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
           <div className="bg-white rounded-2xl shadow-sm p-6 sm:p-8 lg:p-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-8 sm:mb-10">

@@ -18,7 +18,11 @@ const LoginPage = () => {
     try {
       await login(formData);
     } catch (error) {
-      if (error.response) {
+      if (formData.emailOrUsername === "" || formData.password === "") {
+        console.error("Eksik veya hatalı giriş yaptınız.");
+        alert("Eksik veya hatalı giriş yaptınız.");
+        setMessage("Eksik veya hatalı giriş yaptınız.");
+      } else if (error.response) {
         console.error("API Hatası:", error.response.data);
         alert("HATA: API Hatası");
         setMessage(
@@ -51,10 +55,8 @@ const LoginPage = () => {
         <div className="max-w-md mx-auto px-4 sm:px-6">
           <div className="text-center">
             <div className="inline-flex flex-col items-center">
-              <div className="w-32 h-12 sm:w-40 sm:h-14 bg-blue-900 rounded-lg flex items-center justify-center mb-3 sm:mb-4">
-                <span className="text-white font-bold text-xl sm:text-2xl">
-                  ai lab
-                </span>
+              <div className="w-32 h-12 sm:w-40 sm:h-14 rounded-lg flex items-center justify-center mb-3 sm:mb-4">
+                <img src="/Group-1.png" alt="Ai Lab Logo" />
               </div>
               <h1 className="text-xl sm:text-2xl font-bold text-blue-900">
                 Sistem Yönetim Paneli
