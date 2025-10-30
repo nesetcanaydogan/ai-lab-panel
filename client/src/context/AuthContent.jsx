@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { loginUser as apiLoginUser } from "../services/api";
 import apiClient from "../services/api";
 
@@ -9,6 +10,7 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null); // Logged in user info
   const [token, setToken] = useState(localStorage.getItem("token")); // Get token from memory
+  const navigate = useNavigate();
 
   // At first component load, if there is token go tell API
   useEffect(() => {
