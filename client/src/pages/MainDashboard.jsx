@@ -62,7 +62,7 @@ const AdminDashboard = () => {
         <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 mb-6 lg:mb-8">
           <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
             Laboratuvar Doluluğu /{" "}
-            <span className="text-blue-900">
+            <span className="text-blue-900 font-bold">
               İçerideki Takım Arkadaşlarının Sayısı
             </span>
           </h2>

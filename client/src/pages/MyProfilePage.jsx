@@ -9,21 +9,14 @@ const ProfilePage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white shadow-sm flex">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="w-32 h-12 sm:w-40 sm:h-14 bg-blue-900 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl sm:text-2xl">
-                  ai lab
-                </span>
+              <div className="w-32 h-12 sm:w-40 sm:h-14 rounded-lg flex items-center justify-center m-5">
+                <img src="/Group-1.png" alt="" />
               </div>
-            </div>
-
-            {/* Date/Time - Desktop */}
-            <div className="hidden md:block text-gray-700 font-medium text-sm lg:text-base">
-              14.09.2026 Pazartesi | 14:09
             </div>
 
             {/* Mobile Menu Button */}
@@ -33,18 +26,6 @@ const ProfilePage = () => {
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
-
-            {/* User Icon - Desktop */}
-            <div className="hidden md:flex items-center">
-              <div className="w-10 h-10 bg-blue-900 rounded-full flex items-center justify-center text-white">
-                <Users size={20} />
-              </div>
-            </div>
-          </div>
-
-          {/* Date/Time - Mobile */}
-          <div className="md:hidden mt-3 text-gray-600 text-sm text-center">
-            14.09.2026 Pazartesi | 14:09
           </div>
         </div>
       </header>
@@ -74,8 +55,6 @@ const ProfilePage = () => {
                 <Bell size={18} />
                 <span>Bildirimlerim</span>
               </button>
-            </div>
-            <div className="col-span-2 md:col-span-1 flex justify-end">
               <button className="bg-blue-900 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-800 transition-colors shadow-md">
                 <Users size={20} />
               </button>
