@@ -9,10 +9,10 @@ const AdminDashboard = () => {
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center relative w-full">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="w-32 h-12 sm:w-40 sm:h-14 rounded-lg flex items-center m-5 justify-center">
+              <div className="w-32 h-12 sm:w-40 sm:h-14 rounded-lg flex items-center justify-center m-5">
                 <img src="/Group-1.png" alt="Ai Lab Logo" />
               </div>
             </div>
@@ -20,7 +20,7 @@ const AdminDashboard = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100 absolute right-4"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -35,29 +35,32 @@ const AdminDashboard = () => {
         } md:block`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:flex md:flex-row md:space-x-2 py-4 gap-2 md:gap-0">
-            <button className="bg-blue-900 text-white px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-blue-800 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base">
+          <div className="flex flex-wrap justify-center items-center py-4 gap-2 md:gap-4">
+            <button className="bg-blue-900 text-white px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-blue-800 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
               <Users size={18} />
               <span>Sistem Merkezi</span>
             </button>
-            <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base">
+            <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
               <Users size={18} />
               <span>Takımım</span>
             </button>
-            <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base">
+            <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
               <Send size={18} />
               <span>Mesaj Gönder</span>
             </button>
-            <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base">
+            <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
               <Bell size={18} />
               <span>Bildirimlerim</span>
+            </button>
+            <button className="bg-gray-50 text-gray-700 w-12 h-12 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
+              <Users size={20} />
             </button>
           </div>
         </div>
       </nav>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8 pb-24 mt-10">
         {/* Stats Card */}
         <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 mb-6 lg:mb-8">
           <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">

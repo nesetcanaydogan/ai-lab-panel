@@ -9,20 +9,20 @@ const ProfilePage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow-sm flex">
+      <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center relative w-full">
             {/* Logo */}
             <div className="flex items-center">
               <div className="w-32 h-12 sm:w-40 sm:h-14 rounded-lg flex items-center justify-center m-5">
-                <img src="/Group-1.png" alt="" />
+                <img src="/Group-1.png" alt="Ai Lab Logo" />
               </div>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100 absolute right-4"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -37,34 +37,32 @@ const ProfilePage = () => {
         } md:block`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:flex md:flex-row md:justify-between md:items-center py-4 gap-2 md:gap-0">
-            <div className="flex flex-wrap gap-2 col-span-2 md:col-span-1">
-              <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
-                <Users size={18} />
-                <span>Sistem Merkezi</span>
-              </button>
-              <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
-                <Users size={18} />
-                <span>Takımım</span>
-              </button>
-              <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
-                <Send size={18} />
-                <span>Mesaj Gönder</span>
-              </button>
-              <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
-                <Bell size={18} />
-                <span>Bildirimlerim</span>
-              </button>
-              <button className="bg-blue-900 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-800 transition-colors shadow-md">
-                <Users size={20} />
-              </button>
-            </div>
+          <div className="flex flex-wrap justify-center items-center py-4 gap-2 md:gap-4">
+            <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
+              <Users size={18} />
+              <span>Sistem Merkezi</span>
+            </button>
+            <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
+              <Users size={18} />
+              <span>Takımım</span>
+            </button>
+            <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
+              <Send size={18} />
+              <span>Mesaj Gönder</span>
+            </button>
+            <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
+              <Bell size={18} />
+              <span>Bildirimlerim</span>
+            </button>
+            <button className="bg-blue-900 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-800 transition-colors shadow-md border border-gray-200">
+              <Users size={20} />
+            </button>
           </div>
         </div>
       </nav>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
         {/* Profile Header Card */}
         <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6 mb-6 lg:mb-8">
           <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
@@ -208,7 +206,7 @@ const ProfilePage = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-8 lg:mt-12">
+      <footer className="bg-white border-t border-gray-200 mt-8 lg:mt-12 fixed bottom-0 left-0 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6 text-xs sm:text-sm text-gray-600">
             <a href="#" className="hover:text-blue-900 transition-colors">

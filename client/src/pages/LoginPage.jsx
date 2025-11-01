@@ -58,7 +58,7 @@ const LoginPage = () => {
               <div className="w-32 h-12 sm:w-40 sm:h-14 rounded-lg flex items-center justify-center mb-3 sm:mb-4 my-3">
                 <img src="/Group-1.png" alt="Ai Lab Logo" />
               </div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-blue-900 my-3 mb-0">
+              <h1 className="text-2xl sm:text-3xl font-bold text-[#0D1552] my-3 mb-0">
                 Sistem Yönetim Paneli
               </h1>
             </div>
