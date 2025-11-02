@@ -5,60 +5,7 @@ const AdminDashboard = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-center relative w-full">
-            {/* Logo */}
-            <div className="flex items-center">
-              <div className="w-32 h-12 sm:w-40 sm:h-14 rounded-lg flex items-center justify-center m-5">
-                <img src="/Group-1.png" alt="Ai Lab Logo" />
-              </div>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 absolute right-4"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Navigation */}
-      <nav
-        className={`bg-white border-b border-gray-200 ${
-          mobileMenuOpen ? "block" : "hidden"
-        } md:block`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center items-center py-4 gap-2 md:gap-4">
-            <button className="bg-blue-900 text-white px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-blue-800 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
-              <Users size={18} />
-              <span>Sistem Merkezi</span>
-            </button>
-            <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
-              <Users size={18} />
-              <span>Takımım</span>
-            </button>
-            <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
-              <Send size={18} />
-              <span>Mesaj Gönder</span>
-            </button>
-            <button className="bg-gray-50 text-gray-700 px-3 sm:px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
-              <Bell size={18} />
-              <span>Bildirimlerim</span>
-            </button>
-            <button className="bg-gray-50 text-gray-700 w-12 h-12 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base border border-gray-200">
-              <Users size={20} />
-            </button>
-          </div>
-        </div>
-      </nav>
-
+    <>
       {/* Main Content */}
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8 pb-24 mt-10">
         {/* Stats Card */}
@@ -201,27 +148,7 @@ const AdminDashboard = () => {
           </div>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-8 lg:mt-12 fixed bottom-0 left-0 w-full">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6 text-xs sm:text-sm text-gray-600">
-            <a href="#" className="hover:text-blue-900 transition-colors">
-              Yardım Merkezi
-            </a>
-            <a href="#" className="hover:text-blue-900 transition-colors">
-              Kullanıcı Sözleşmesi
-            </a>
-            <a href="#" className="hover:text-blue-900 transition-colors">
-              Geliştirici Ekibi
-            </a>
-            <a href="#" className="hover:text-blue-900 transition-colors">
-              İlgili Sayfada Hata Bildir
-            </a>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 };
 
