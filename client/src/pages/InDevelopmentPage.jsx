@@ -12,6 +12,14 @@ const InDevelopmentPage = () => {
       <p className="text-lg text-gray-600 mb-6">
         Bu bölüm şu anda geliştirme aşamasındadır. Yakında burada olacak!
       </p>
+      <video 
+        src="/inDevVideo.mp4"
+        autoPlay  // Otomatik başlar
+        loop      // GIF gibi sürekli döner
+        muted     // SESSIZ OLMALI (Tarayıcıların otomatik oynatmaya izin vermesi için şart)
+        playsInline // Mobilde tam ekrana geçmesini engeller
+        className="w-full max-w-sm rounded-lg my-4" // Boyutları kendine göre ayarla
+      />
       <Link
         to="/dashboard"
         className="px-6 py-3 bg-blue-900 text-white rounded-lg font-medium hover:bg-blue-800"
