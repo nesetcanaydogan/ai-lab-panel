@@ -1,7 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser as apiLoginUser } from "../services/api";
-import { getMe } from "../services/api";
+import { loginUser as apiLoginUser, getUserById } from "../services/api";
 import apiClient from "../services/api";
 
 // Creating Context
@@ -17,11 +16,11 @@ export const AuthProvider = ({ children }) => {
   // At first component load, if there is token go tell API
   useEffect(() => {
     const fetchUser = async () => {
-      if (token) {
+      if (token && user) {
         apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         try {
           // Get the token's owner from API
-          const response = await getMe();
+          const response = await getUserById(user);
           setUser(response.data);
         } catch (error) {
           console.error("Token, kullanıcıyı getiremedi, çıkış yapılıyor.");
@@ -34,7 +33,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     fetchUser();
-  }, [token]);
+  }, [token, user]);
 
   // Log In Function - Global
   const login = async (loginData) => {
@@ -42,6 +41,7 @@ export const AuthProvider = ({ children }) => {
 
     // API Call
     const response = await apiLoginUser(loginData);
+    console.log("LOGIN API CEVABI:", response.data);
 
     // if (success)
     const { accessToken, user } = response.data;
@@ -52,6 +52,7 @@ export const AuthProvider = ({ children }) => {
     setUser(user);
     // Save token to the browser memory
     localStorage.setItem("token", accessToken);
+    localStorage.setItem("user", user);
     // Redirect user to the dashboard
     navigate("/dashboard");
   };
@@ -61,9 +62,11 @@ export const AuthProvider = ({ children }) => {
     // Clear states
     setUser(null);
     setToken(null);
+    setUser(null);
 
     // Delete the token from memory
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
 
     // Redirect the user to the Log In page
     navigate("/login");
@@ -80,7 +83,11 @@ export const AuthProvider = ({ children }) => {
 
   // Loading Page
   if (isLoading) {
-    return <div className="min-h-screen bg-gray-50 flex items-center justify-center">Yükleniyor...</div>;
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        Yükleniyor...
+      </div>
+    );
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -30,8 +30,8 @@ export const logoutUser = (tokenData) => {
   return apiClient.post("api/Auth/logout", tokenData);
 };
 
-export const getMe = () => {
-  return apiClient.get("api/Auth/me");
-};
+export const getUserById = (id) => {
+  return apiClient.get(`api/Users/${id}`)
+}
 
 export default apiClient;
