@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContent";
 
 const ProfilePage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   return (
     <>

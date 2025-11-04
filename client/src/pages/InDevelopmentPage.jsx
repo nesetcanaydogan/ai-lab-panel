@@ -14,11 +14,11 @@ const InDevelopmentPage = () => {
       </p>
       <video 
         src="/inDevVideo.mp4"
-        autoPlay  // Otomatik başlar
-        loop      // GIF gibi sürekli döner
-        muted     // SESSIZ OLMALI (Tarayıcıların otomatik oynatmaya izin vermesi için şart)
-        playsInline // Mobilde tam ekrana geçmesini engeller
-        className="w-full max-w-sm rounded-lg my-4" // Boyutları kendine göre ayarla
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full max-w-sm rounded-lg my-4"
       />
       <Link
         to="/dashboard"

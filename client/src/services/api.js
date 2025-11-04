@@ -30,12 +30,8 @@ export const logoutUser = (tokenData) => {
   return apiClient.post("api/Auth/logout", tokenData);
 };
 
-export const getMe = (authToken) => {
-  return apiClient.get("api/Auth/me", {
-    headers: {
-      Authorization: `Bearer ${authToken}`,
-    },
-  });
+export const getMe = () => {
+  return apiClient.get("api/Auth/me");
 };
 
 export default apiClient;

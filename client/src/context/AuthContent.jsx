@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser as apiLoginUser } from "../services/api";
+import { getMe } from "../services/api";
 import apiClient from "../services/api";
 
 // Creating Context
@@ -10,19 +11,29 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null); // Logged in user info
   const [token, setToken] = useState(localStorage.getItem("token")); // Get token from memory
+  const [isLoading, setIsLoading] = useState(true); // To know that getting data while page is loading
   const navigate = useNavigate();
 
   // At first component load, if there is token go tell API
   useEffect(() => {
-    if (token) {
-      // Make sure that API will use that token for every future requests
-      apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    const fetchUser = async () => {
+      if (token) {
+        apiClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        try {
+          // Get the token's owner from API
+          const response = await getMe();
+          setUser(response.data);
+        } catch (error) {
+          console.error("Token, kullanıcıyı getiremedi, çıkış yapılıyor.");
+          logout();
+        }
+      } else {
+        delete apiClient.defaults.headers.common["Authorization"];
+      }
+      setIsLoading(false); // Loading is over
+    };
 
-      // TODO: With the call of "/api/Auth/me" we can get user data
-    } else {
-      // Delete the token from the API's header
-      delete apiClient.defaults.headers.common["Authorization"];
-    }
+    fetchUser();
   }, [token]);
 
   // Log In Function - Global
@@ -66,6 +77,11 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
   };
+
+  // Loading Page
+  if (isLoading) {
+    return <div className="min-h-screen bg-gray-50 flex items-center justify-center">Yükleniyor...</div>;
+  }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
