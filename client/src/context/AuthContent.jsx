@@ -41,8 +41,7 @@ export const AuthProvider = ({ children }) => {
 
     // API Call
     const response = await apiLoginUser(loginData);
-    console.log("LOGIN API CEVABI:", response.data);
-
+    console.log(response.data)
     // if (success)
     const { accessToken, user } = response.data;
 

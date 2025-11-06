@@ -19,7 +19,7 @@ const ProfilePage = () => {
             <div>
               <p className="text-xs sm:text-sm text-gray-600 mb-1">Ad Soyad</p>
               <p className="text-lg sm:text-xl font-bold text-gray-900">
-                Ahmet Ahmet
+                {user ? user.fullName : "Kullanıcı Adı Yüklenemedi"}
               </p>
             </div>
             <div>
@@ -49,11 +49,16 @@ const ProfilePage = () => {
             <div className="bg-white rounded-xl shadow-sm p-6 sm:p-8 flex flex-col items-center">
               <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden bg-gray-200 mb-4">
                 <div className="w-full h-full bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center text-white text-6xl font-bold">
-                  AA
+                  {user
+                    ? user.fullName
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")
+                    : "AA"}
                 </div>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
-                Ahmet Ahmet
+                {user ? user.fullName : "..."}
               </h3>
             </div>
 
